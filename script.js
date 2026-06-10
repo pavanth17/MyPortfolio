@@ -224,7 +224,7 @@ function showNotification(message, type = 'info') {
     } else if (type === 'error') {
         notification.style.background = 'linear-gradient(135deg, #dc3545, #fd7e14)';
     } else {
-        notification.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+        notification.style.background = 'var(--primary-gradient)';
     }
     
     document.body.appendChild(notification);
@@ -294,7 +294,7 @@ const createScrollToTopButton = () => {
         right: 30px;
         width: 50px;
         height: 50px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--primary-gradient);
         color: white;
         border: none;
         border-radius: 50%;
@@ -434,7 +434,7 @@ preloader.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--bg-hero);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -484,7 +484,7 @@ window.addEventListener('load', () => {
 const activeNavStyle = document.createElement('style');
 activeNavStyle.textContent = `
     .nav-link.active {
-        color: #667eea !important;
+        color: var(--primary-color) !important;
     }
     
     .nav-link.active::after {
@@ -492,5 +492,180 @@ activeNavStyle.textContent = `
     }
 `;
 document.head.appendChild(activeNavStyle);
+
+// Dynamic Theme Generator based on Profile Photo
+function rgbToHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+        h = s = 0; // achromatic
+    } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    return {
+        h: Math.round(h * 360),
+        s: Math.round(s * 100),
+        l: Math.round(l * 100)
+    };
+}
+
+function hslToRgb(h, s, l) {
+    h /= 360; s /= 100; l /= 100;
+    let r, g, b;
+    if (s === 0) {
+        r = g = b = l; // achromatic
+    } else {
+        const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1/6) return p + (q - p) * 6 * t;
+            if (t < 1/2) return q;
+            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        };
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        const p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+    }
+    return {
+        r: Math.round(r * 255),
+        g: Math.round(g * 255),
+        b: Math.round(b * 255)
+    };
+}
+
+function extractColorsFromPhoto() {
+    const imgElement = document.querySelector('.profile-img');
+    if (!imgElement) return;
+
+    if (imgElement.complete) {
+        analyzeImage(imgElement);
+    } else {
+        imgElement.addEventListener('load', () => {
+            analyzeImage(imgElement);
+        });
+    }
+}
+
+function analyzeImage(img) {
+    try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 100;
+        canvas.height = 100;
+        
+        ctx.drawImage(img, 0, 0, 100, 100);
+        const imgData = ctx.getImageData(0, 0, 100, 100);
+        const data = imgData.data;
+        
+        // Corner points mapping for photo background detection (top edge only)
+        const cornerPoints = [
+            {x: 10, y: 10},
+            {x: 90, y: 10},
+            {x: 50, y: 10},
+            {x: 30, y: 10},
+            {x: 70, y: 10}
+        ];
+        
+        let bgR = 0, bgG = 0, bgB = 0;
+        cornerPoints.forEach(p => {
+            const idx = (p.y * 100 + p.x) * 4;
+            bgR += data[idx];
+            bgG += data[idx+1];
+            bgB += data[idx+2];
+        });
+        bgR = Math.round(bgR / cornerPoints.length);
+        bgG = Math.round(bgG / cornerPoints.length);
+        bgB = Math.round(bgB / cornerPoints.length);
+        
+        // Clothing mapping (bottom corners/shoulders to avoid white shirt center)
+        const clothingPoints = [
+            {x: 10, y: 90},
+            {x: 90, y: 90},
+            {x: 20, y: 95},
+            {x: 80, y: 95}
+        ];
+        
+        let subR = 0, subG = 0, subB = 0;
+        clothingPoints.forEach(p => {
+            const idx = (p.y * 100 + p.x) * 4;
+            subR += data[idx];
+            subG += data[idx+1];
+            subB += data[idx+2];
+        });
+        subR = Math.round(subR / clothingPoints.length);
+        subG = Math.round(subG / clothingPoints.length);
+        subB = Math.round(subB / clothingPoints.length);
+        
+        applyThemeFromColors(bgR, bgG, bgB, subR, subG, subB);
+    } catch (e) {
+        console.warn("Dynamic color extraction disabled: standard security restrictions apply for CORS if not hosted on origin.", e);
+    }
+}
+
+function applyThemeFromColors(bgR, bgG, bgB, subR, subG, subB) {
+    const bgHsl = rgbToHsl(bgR, bgG, bgB);
+    const subHsl = rgbToHsl(subR, subG, subB);
+    
+    let isLightBg = bgHsl.l > 50;
+    
+    let lightHsl = isLightBg ? bgHsl : subHsl;
+    let darkHsl = isLightBg ? subHsl : bgHsl;
+    
+    // Force light bg to be very light and clean
+    let lightBgL = Math.max(lightHsl.l, 94);
+    let lightBgS = Math.min(lightHsl.s, 12);
+    
+    // Force dark colors to be very dark and rich
+    let darkBgL = Math.min(darkHsl.l, 20);
+    let darkBgS = Math.max(darkHsl.s, 15);
+    
+    // Dynamic Accent Color (e.g. periwinkle, indigo, etc.)
+    let accentH = darkHsl.h;
+    let accentS = Math.max(darkHsl.s, 45); 
+    let accentL = Math.min(Math.max(darkHsl.l, 35), 55);
+    
+    const root = document.documentElement;
+    
+    // Set Raw Variable Outputs
+    root.style.setProperty('--theme-photo-bg', `rgb(${bgR}, ${bgG}, ${bgB})`);
+    root.style.setProperty('--theme-photo-subject', `rgb(${subR}, ${subG}, ${subB})`);
+    
+    // Set Semantic CSS theme
+    root.style.setProperty('--primary-color', `hsl(${accentH}, ${accentS}%, ${accentL}%)`);
+    root.style.setProperty('--primary-light', `hsl(${lightHsl.h}, ${lightHsl.s}%, ${Math.max(lightHsl.l - 5, 85)}%)`);
+    root.style.setProperty('--primary-dark', `hsl(${darkHsl.h}, ${darkBgS}%, ${darkBgL}%)`);
+    
+    root.style.setProperty('--bg-light', `hsl(${lightHsl.h}, ${lightBgS}%, ${lightBgL}%)`);
+    root.style.setProperty('--bg-hero', `linear-gradient(135deg, hsl(${darkHsl.h}, ${darkBgS}%, ${darkBgL}%) 0%, hsl(${darkHsl.h}, ${darkBgS}%, ${Math.max(darkBgL - 6, 8)}%) 100%)`);
+    
+    // Convert Accent HSL to RGB for opacity supports
+    const accentRgb = hslToRgb(accentH, accentS, accentL);
+    root.style.setProperty('--primary-color-rgb', `${accentRgb.r}, ${accentRgb.g}, ${accentRgb.b}`);
+    
+    // Set Gradients
+    root.style.setProperty('--primary-gradient', `linear-gradient(135deg, hsl(${accentH}, ${accentS}%, ${accentL}%) 0%, hsl(${darkHsl.h}, ${darkBgS}%, ${darkBgL}%) 100%)`);
+    root.style.setProperty('--accent-gradient', `linear-gradient(135deg, hsl(${accentH}, ${Math.min(accentS + 10, 100)}%, ${Math.min(accentL + 10, 80)}%) 0%, hsl(${accentH}, ${accentS}%, ${accentL}%) 100%)`);
+    
+    root.style.setProperty('--scrollbar-thumb', `linear-gradient(135deg, hsl(${accentH}, ${accentS}%, ${accentL}%) 0%, hsl(${darkHsl.h}, ${darkBgS}%, ${darkBgL}%) 100%)`);
+    root.style.setProperty('--scrollbar-thumb-hover', `linear-gradient(135deg, hsl(${accentH}, ${Math.min(accentS + 10, 100)}%, ${Math.max(accentL - 5, 20)}%) 0%, hsl(${darkHsl.h}, ${darkBgS}%, ${Math.max(darkBgL - 5, 5)}%) 100%)`);
+    
+    console.log(`Theme dynamically updated from image palette (Accent: H:${accentH} S:${accentS}% L:${accentL}%)`);
+}
+
+// Initialize color extraction
+extractColorsFromPhoto();
 
 console.log('Portfolio website loaded successfully! 🚀');
