@@ -9,7 +9,6 @@ const roleLabel = document.querySelector('#active-role-label');
 const projectDialog = document.querySelector('#project-dialog');
 const loader = document.querySelector('#reel-loader');
 const brandIntro = document.querySelector('#brand-intro');
-if (brandIntro.open) brandIntro.close();
 const main = document.querySelector('#main');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let currentRole = null;
@@ -222,7 +221,7 @@ brandIntro.addEventListener('close', () => {
 });
 brandIntro.showModal();
 document.querySelector('#intro-skip').focus();
-window.setTimeout(finishBrandIntro, reducedMotion ? 1800 : 3100);
+window.setTimeout(finishBrandIntro, reducedMotion ? 1800 : 4800);
 
 document.querySelectorAll('[data-dialog="project-dialog"]').forEach((button) => {
     button.addEventListener('click', () => {

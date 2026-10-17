@@ -108,6 +108,10 @@ a {
     color: var(--text);
 }
 
+.brand-intro:not([open]) {
+    display: none;
+}
+
 .brand-intro::backdrop {
     background: #09090b;
 }
@@ -218,7 +222,7 @@ a {
     transform: scaleX(0);
     transform-origin: left;
     background: linear-gradient(90deg, var(--orange), #ffb265);
-    animation: intro-progress 2.85s linear forwards;
+    animation: intro-progress 4.55s linear forwards;
 }
 
 .intro-skip {
