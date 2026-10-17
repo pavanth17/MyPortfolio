@@ -3,395 +3,324 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pavanth Kumar Chopparapu - Portfolio</title>
-    <link rel="stylesheet" href="styles.css?v=2">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#09090b">
+    <meta name="description"
+        content="Explore the portfolio of Pavanth Kumar Chopparapu, a Computer Science Engineering student interested in software development, AI, and robotics.">
+    <meta property="og:title" content="Pavanth Kumar Chopparapu | Developer Portfolio">
+    <meta property="og:description"
+        content="Explore Pavanth's projects, skills, education, achievements, and interests.">
+    <meta property="og:type" content="website">
+    <title>Pavanth Kumar Chopparapu | Developer Portfolio</title>
+    <link rel="preload" as="image" href="pavanth.png" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=9">
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span>PK</span>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <dialog class="brand-intro" id="brand-intro" open aria-label="Welcome to Pavanth Kumar Chopparapu's portfolio">
+        <div class="intro-backdrop" aria-hidden="true"></div>
+        <div class="intro-image-wrap">
+            <img src="pavanth.png" alt="" fetchpriority="high">
+            <span class="intro-image-glow" aria-hidden="true"></span>
+        </div>
+        <div class="intro-content">
+            <p class="intro-eyebrow"><span></span> AN ORIGINAL DEVELOPER STORY</p>
+            <p class="intro-name-first">PAVANTH</p>
+            <h1>KUMAR<br><span>CHOPPARAPU</span></h1>
+            <p class="intro-tagline">Curiosity in. Possibility out.</p>
+            <div class="intro-progress" aria-hidden="true"><span></span></div>
+        </div>
+        <button class="intro-skip" id="intro-skip" type="button">Skip intro <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+    </dialog>
+    <dialog class="role-gate" id="role-gate" aria-labelledby="role-gate-title">
+        <div class="role-gate-content">
+            <div class="role-gate-brand"><span class="brand-mark">PK</span><span class="brand-word">PAVANTH<span>+</span></span></div>
+            <p class="role-kicker">CHOOSE YOUR VIEW</p>
+            <h1 id="role-gate-title">What brings you <span>here?</span></h1>
+            <p class="role-intro">Every good story has more than one way in. Pick yours and I’ll bring the most relevant chapters to the front.</p>
+            <div class="role-options">
+                <button class="role-option" type="button" data-role="recruiter">
+                    <span class="role-option-icon"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></span>
+                    <span><strong>Recruiter</strong><small>Jump straight to projects, skills, and my journey</small></span>
+                    <i class="fa-solid fa-arrow-right role-option-arrow" aria-hidden="true"></i>
+                </button>
+                <button class="role-option" type="button" data-role="student">
+                    <span class="role-option-icon"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i></span>
+                    <span><strong>Student</strong><small>Explore what I’m learning and building along the way</small></span>
+                    <i class="fa-solid fa-arrow-right role-option-arrow" aria-hidden="true"></i>
+                </button>
+                <button class="role-option" type="button" data-role="faculty">
+                    <span class="role-option-icon"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i></span>
+                    <span><strong>Faculty</strong><small>See the academic path, project, and milestones</small></span>
+                    <i class="fa-solid fa-arrow-right role-option-arrow" aria-hidden="true"></i>
+                </button>
+                <button class="role-option" type="button" data-role="collaborator">
+                    <span class="role-option-icon"><i class="fa-solid fa-people-arrows-left-right" aria-hidden="true"></i></span>
+                    <span><strong>Collaborator</strong><small>Find shared interests and a way to say hello</small></span>
+                    <i class="fa-solid fa-arrow-right role-option-arrow" aria-hidden="true"></i>
+                </button>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
+            <p class="role-disclaimer">One real story, arranged around what you came to discover.</p>
+        </div>
+    </dialog>
+    <div class="reel-loader" id="reel-loader" hidden aria-hidden="true">
+        <span class="loader-mark">PK</span><span class="loader-line"></span>
+    </div>
+    <div class="pointer-aura" aria-hidden="true"></div>
+    <header class="app-header" inert>
+        <nav class="app-nav" aria-label="Main navigation">
+            <a class="brand" href="#home" aria-label="Pavanth home">
+                <span class="brand-mark">PK</span>
+                <span class="brand-word">PAVANTH<span>+</span></span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+                aria-controls="nav-menu"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a class="nav-link active" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#projects">Projects</a></li>
+                <li><a class="nav-link" href="#skills">Skills</a></li>
+                <li><a class="nav-link" href="#expertise">Expertise</a></li>
+                <li><a class="nav-link" href="#story">My Story</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+            <button class="role-switch" type="button" aria-label="Change portfolio view">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i><span>View: <strong id="active-role-label">Guest</strong></span>
+            </button>
+            <a class="profile-shortcut" href="https://github.com/pavanth17" target="_blank"
+                rel="noopener noreferrer" aria-label="View Pavanth on GitHub"><i class="fab fa-github"
+                    aria-hidden="true"></i></a>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content" data-aos="fade-up">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Hi, I'm Pavanth Kumar
-                    </h1>
-                    <h2 class="hero-subtitle">Computer Science Engineering Student</h2>
-                    <p class="hero-description">
-                        Passionate about solving real-world problems through technology.
-                        Aspiring Software Engineer with expertise in Python and Java.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    <main id="main" inert>
+        <section id="home" class="feature">
+            <div class="feature-backdrop" aria-hidden="true"></div>
+            <div class="feature-shade" aria-hidden="true"></div>
+            <div class="feature-grid" aria-hidden="true"></div>
+            <div class="feature-content">
+                <div class="feature-copy">
+                    <p class="feature-label"><span class="live-dot"></span> PAVANTH ORIGINAL · DEVELOPER PROFILE</p>
+                    <p class="feature-overline" id="role-overline">A LITTLE CURIOSITY. A LOT OF POSSIBILITY.</p>
+                    <h1>Pavanth Kumar<br><span>Chopparapu</span></h1>
+                    <div class="feature-meta">
+                        <span class="meta-highlight">COMPUTER SCIENCE</span>
+                        <span>Engineering Student</span>
+                        <span>Python · Web</span>
                     </div>
-                </div>
-                <div class="hero-image" data-aos="fade-left">
-                    <img src="pavanth.png" alt="Pavanth Kumar" class="profile-img">
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <div class="scroll-arrow"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">About Me</h2>
-            <div class="about-content">
-                <div class="about-text" data-aos="fade-right">
-                    <p class="about-description">
-                        I am a Computer Science Engineering student passionate about solving real-world problems through
-                        technology.
-                        With a strong foundation in programming languages like Java, and Python, I am eager to explore
-                        software development,
-                        AI, and robotics while working on impactful projects that make a difference.
-                    </p>
-                    <p class="about-description">
-                        Currently pursuing my B.Tech at Narayana Engineering College, I actively participate in
-                        hackathons and
-                        continuously strive to enhance my skills in emerging technologies. My goal is to become a
-                        skilled software
-                        engineer who can contribute to innovative solutions that address real-world challenges.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <h3>2+</h3>
-                            <p>Programming Languages</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>3+</h3>
-                            <p>Technical Skills</p>
-                        </div>
-                        <div class="stat-item">
-                            <h3>3+</h3>
-                            <p>Years of Learning</p>
-                        </div>
+                    <p class="feature-description" id="role-summary">I’m Pavanth, a Computer Science Engineering student who loves turning real-world questions into things you can build, test, and improve.</p>
+                    <p class="role-context" id="role-context" aria-live="polite">Come for the projects; stay for the curiosity that started them.</p>
+                    <div class="feature-buttons">
+                        <a class="button button-play" id="role-primary-action" href="#projects"><i class="fa-solid fa-play"
+                                aria-hidden="true"></i> Explore Projects</a>
+                        <a class="button button-more" href="#about"><i class="fa-solid fa-circle-info"
+                                aria-hidden="true"></i> More Info</a>
                     </div>
+                    <div class="feature-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                        Andhra Pradesh, India</div>
                 </div>
-                <div class="about-image" data-aos="fade-left">
-                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600"
-                        alt="About Me" class="about-img">
+                <div class="feature-portrait" aria-hidden="true">
+                    <div class="portrait-glow"></div>
+                    <img src="pavanth.png" alt="Portrait of Pavanth Kumar Chopparapu" fetchpriority="high">
+                    <div class="portrait-stamp"><span>PROFILE</span><strong>PK_01</strong></div>
                 </div>
             </div>
-        </div>
-    </section>
+            <a href="#projects" class="feature-scroll" aria-label="Scroll to projects"><span></span></a>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
-            <div class="skills-content">
-                <div class="skills-category" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="category-title">Technical Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <h4>Python</h4>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 10%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-java"></i>
-                            </div>
-                            <h4>Java</h4>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 30%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-html5"></i>
-                            </div>
-                            <h4>HTML/CSS</h4>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 30%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-js"></i>
-                            </div>
-                            <h4>JavaScript</h4>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 20%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">
-                                <i class="fab fa-git-alt"></i>
-                            </div>
-                            <h4>Git & GitHub</h4>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 10%"></div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="app-content">
+            <section id="projects" class="catalog-section">
+                <div class="shelf-heading">
+                    <div><p class="shelf-kicker">PAVANTH'S PICKS</p><h2>Featured <span>Project</span></h2><p class="shelf-description">One real project, a big problem space, and a chance to bring software and agentic AI into the same story.</p></div>
+                    <span class="shelf-note">THE CURRENT LINEUP</span>
                 </div>
-
-                <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="category-title">Soft Skills</h3>
-                    <div class="soft-skills">
-                        <div class="soft-skill-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Problem-Solving</span>
+                <div class="project-shelf">
+                    <article class="project-card" data-technologies="python html javascript agentic-ai">
+                        <button class="poster-button project-details" type="button" data-dialog="project-dialog"
+                            aria-label="View details for Autonomous Patient-Care Coordination System Using Agentic AI">
+                            <img src="patient_care_system.png"
+                                alt="Autonomous Patient-Care Coordination System interface" loading="lazy">
+                            <span class="poster-wash"></span>
+                            <span class="poster-glare" aria-hidden="true"></span>
+                            <span class="poster-topline"><span>PK ORIGINAL</span><span>PROJECT 01</span></span>
+                            <span class="poster-title">PATIENT<br>CARE AI</span>
+                            <span class="poster-play"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
+                        </button>
+                        <div class="project-info">
+                            <div class="project-title-row"><div><p class="shelf-kicker">FEATURED CREATION</p>
+                                <h3>Autonomous Patient-Care Coordination System Using Agentic AI</h3></div>
+                                <span class="project-index">01</span>
+                            </div>
+                            <p class="project-description">A patient-care coordination system bringing a Python backend, an interactive web frontend, and agentic AI into one project.</p>
+                            <div class="tag-row"><span>Python</span><span>HTML/CSS</span><span>JavaScript</span><span>Agentic AI</span></div>
+                            <div class="project-links">
+                                <button class="text-button project-details" type="button" data-dialog="project-dialog">
+                                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i> Details
+                                </button>
+                                <a class="text-button" href="https://github.com/pavanth17/Autonomous_Patient-Care_Coordination_System_Using_Agentic_AI"
+                                    target="_blank" rel="noopener noreferrer"><i class="fab fa-github"
+                                        aria-hidden="true"></i> Repository</a>
+                            </div>
                         </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-users"></i>
-                            <span>Team Collaboration</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Time Management</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-comments"></i>
-                            <span>Communication</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-sync-alt"></i>
-                            <span>Adaptability</span>
-                        </div>
-                        <div class="soft-skill-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Continuous Learning</span>
-                        </div>
-                    </div>
+                    </article>
                 </div>
-            </div>
-        </div>
-    </section>
+                <p class="project-filter-empty" id="project-filter-empty" hidden>No currently listed project matches that skill. The project list stays limited to work already on this portfolio.</p>
+            </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Education & Achievements</h2>
-            <div class="education-content">
-                <div class="education-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="education-details">
+            <section id="skills" class="catalog-section">
+                <div class="shelf-heading">
+                    <div><p class="shelf-kicker">CHARACTER ABILITIES</p><h2>My <span>Skill Set</span></h2><p class="shelf-description">The tools I’m learning and using to turn ideas into working experiences. Pick one to see where it appears.</p></div>
+                    <span class="shelf-note">SELECT A SKILL</span>
+                </div>
+                <div class="horizontal-shelf skill-shelf" aria-label="Technical skills">
+                    <button class="skill-card" type="button" data-skill="python" aria-pressed="false"><i class="fab fa-python" aria-hidden="true"></i><span><strong>Python</strong><small>Programming</small></span></button>
+                    <button class="skill-card" type="button" data-skill="html" aria-pressed="false"><i class="fab fa-html5" aria-hidden="true"></i><span><strong>HTML/CSS</strong><small>Web development</small></span></button>
+                    <button class="skill-card" type="button" data-skill="javascript" aria-pressed="false"><i class="fab fa-js" aria-hidden="true"></i><span><strong>JavaScript</strong><small>Web development</small></span></button>
+                    <button class="skill-card" type="button" data-skill="git" aria-pressed="false"><i class="fab fa-git-alt" aria-hidden="true"></i><span><strong>Git &amp; GitHub</strong><small>Version control</small></span></button>
+                </div>
+                <p class="skill-filter-status" id="skill-filter-status" aria-live="polite">Select a skill to find it in the featured project. Select it again to clear.</p>
+                <div class="shelf-heading secondary-heading">
+                    <div><p class="shelf-kicker">PARTY SKILLS</p><h2>How I <span>Work</span></h2><p class="shelf-description">Good builds take more than code. These are the habits I bring to learning and working with others.</p></div>
+                    <span class="shelf-note">THE HUMAN SIDE</span>
+                </div>
+                <div class="horizontal-shelf soft-shelf" aria-label="Soft skills">
+                    <span><i class="fa-regular fa-lightbulb" aria-hidden="true"></i> Problem-Solving</span>
+                    <span><i class="fa-solid fa-people-group" aria-hidden="true"></i> Team Collaboration</span>
+                    <span><i class="fa-regular fa-clock" aria-hidden="true"></i> Time Management</span>
+                    <span><i class="fa-regular fa-comments" aria-hidden="true"></i> Communication</span>
+                    <span><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Adaptability</span>
+                    <span><i class="fa-solid fa-book-open" aria-hidden="true"></i> Continuous Learning</span>
+                </div>
+            </section>
+
+            <section id="expertise" class="catalog-section expertise-section">
+                <div class="shelf-heading">
+                    <div><p class="shelf-kicker">HOW THE PIECES FIT</p><h2>Areas of <span>Exploration</span></h2><p class="shelf-description">A peek at the questions, technologies, and problem spaces showing up in my work so far.</p></div>
+                    <span class="shelf-note">STILL LEARNING. ALWAYS BUILDING.</span>
+                </div>
+                <div class="expertise-stack">
+                    <article class="expertise-card" style="--stack-index: 0">
+                        <div class="expertise-top"><span>PROGRAMMING</span><b>01</b></div>
+                        <div class="expertise-body"><h3>Programming &amp; problem solving</h3><p>Python is one of my go-to tools, while my degree keeps me building a stronger foundation in data structures and algorithms.</p></div>
+                        <span class="expertise-glow" aria-hidden="true"></span>
+                    </article>
+                    <article class="expertise-card" style="--stack-index: 1">
+                        <div class="expertise-top"><span>WEB DEVELOPMENT</span><b>02</b></div>
+                        <div class="expertise-body"><h3>Building the interface</h3><p>HTML, CSS, and JavaScript bring the frontend and interactions of my patient-care project to life.</p></div>
+                        <span class="expertise-glow" aria-hidden="true"></span>
+                    </article>
+                    <article class="expertise-card" style="--stack-index: 2">
+                        <div class="expertise-top"><span>AI PROJECT WORK</span><b>03</b></div>
+                        <div class="expertise-body"><h3>Exploring agentic AI</h3><p>My patient-care coordination project puts agentic AI in the picture—an area I’m excited to keep exploring.</p></div>
+                        <span class="expertise-glow" aria-hidden="true"></span>
+                    </article>
+                    <article class="expertise-card" style="--stack-index: 3">
+                        <div class="expertise-top"><span>DEVELOPER TOOLING</span><b>04</b></div>
+                        <div class="expertise-body"><h3>Learning in the open</h3><p>Git and GitHub are part of my toolkit; projects and hackathons give me new ways to explore emerging technologies.</p></div>
+                        <span class="expertise-glow" aria-hidden="true"></span>
+                    </article>
+                </div>
+            </section>
+
+            <section id="story" class="catalog-section story-section">
+                <div class="shelf-heading">
+                    <div><p class="shelf-kicker">THE JOURNEY SO FAR</p><h2>Education &amp; <span>Achievements</span></h2><p class="shelf-description">College, late-night problem solving, and hackathon rooms—each one adds a new chapter.</p></div>
+                    <span class="shelf-note">CHAPTERS IN PROGRESS</span>
+                </div>
+                <article class="education-card">
+                    <div class="education-symbol"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+                    <div class="education-copy"><p class="shelf-kicker">CURRENT ARC <span>2023 — 2027</span></p>
                         <h3>B.Tech in Computer Science Engineering</h3>
                         <h4>Narayana Engineering College, Gudur</h4>
-                        <p class="education-period">2023 - 2027</p>
-                        <p class="education-description">
-                            Currently pursuing Computer Science Engineering with focus on software development,
-                            data structures, algorithms, and emerging technologies.
-                        </p>
-                    </div>
+                    <p>My B.Tech journey is underway, with a focus on software development, data structures, algorithms, and the technologies still taking shape.</p></div>
+                </article>
+                <div class="shelf-heading award-heading">
+                    <div><p class="shelf-kicker">MILESTONES UNLOCKED</p><h2>Achievements</h2><p class="shelf-description">A collection of hackathon experiences, shared ideas, and one podium finish.</p></div>
+                    <span class="shelf-note">MOMENTS THAT MOVED ME</span>
                 </div>
+                <div class="horizontal-shelf achievement-shelf" aria-label="Achievements">
+                    <article class="achievement-card"><i class="fa-solid fa-trophy" aria-hidden="true"></i><p class="shelf-kicker">HACKATHON</p><h3>Smart India Hackathon 2025</h3><p>Took on a national-level challenge, putting problem-solving and technical implementation into practice.</p></article>
+                    <article class="achievement-card"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i><p class="shelf-kicker">HACKATHON</p><h3>Pal's Innowah Hackathon Final</h3><p>Reached the project presentation and finals of Pal's Innowah Hackathon at IIT Madras.</p></article>
+                    <article class="achievement-card"><i class="fa-solid fa-atom" aria-hidden="true"></i><p class="shelf-kicker">HACKATHON</p><h3>Quantum Computing Hackathon (Online)</h3><p>Joined an online quantum computing challenge conducted by IIT Kharagpur.</p></article>
+                    <article class="achievement-card"><i class="fa-solid fa-medal" aria-hidden="true"></i><p class="shelf-kicker">3RD PLACE</p><h3>12 Hr Hackathon</h3><p>Earned 3rd place at the 12 Hr Hackathon hosted by GDGoC at Narayana Engineering College, Nellore.</p></article>
+                    <article class="achievement-card"><i class="fa-solid fa-trophy" aria-hidden="true"></i><p class="shelf-kicker">HACKATHON</p><h3>Smart India Hackathon 2023</h3><p>Joined the Smart India Hackathon 2023 and put problem-solving and fresh ideas to the test.</p></article>
+                </div>
+            </section>
 
-                <div class="achievements" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Achievements</h3>
-                    <div class="achievement-item">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h4>Smart India Hackathon 2025</h4>
-                            <p>Participated in the prestigious national-level hackathon, showcasing innovative
-                                problem-solving and technical implementation.</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h4>Pal's Innowah Hackathon Final</h4>
-                            <p>Attended the project presentation and finals of Pal's Innowah Hackathon at IIT Madras.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h4>Quantum Computing Hackathon (Online)</h4>
-                            <p>Competited in Quantum Computing Hackathon(Online) conducted by IIT, Kharagpur.</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h4>3rd Place - 12 Hr Hackathon</h4>
-                            <p>Placed 3rd in the 12 Hr Hackathon in Narayana Engineering College, Nellore, conducted by
-                                GDGoC.</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <i class="fas fa-trophy"></i>
-                        <div>
-                            <h4>Smart India Hackathon 2023</h4>
-                            <p>Participated in the prestigious Smart India Hackathon 2023, showcasing problem-solving
-                                skills and innovative thinking.</p>
-                        </div>
+            <section id="about" class="catalog-section profile-section">
+                <div class="shelf-heading">
+                    <div><p class="shelf-kicker">BEHIND THE BUILD</p><h2>About <span>Pavanth</span></h2><p class="shelf-description">The person behind the commits: what I’m curious about, what I’m learning, and where I hope to go.</p></div>
+                    <span class="shelf-note">A LITTLE MORE PERSONAL</span>
+                </div>
+                <div class="profile-panel">
+                    <img src="pavanth.png" alt="Portrait of Pavanth Kumar Chopparapu" loading="lazy">
+                    <div class="profile-copy">
+                        <p class="shelf-kicker">A LITTLE ABOUT ME</p>
+                        <p>I’m a Computer Science Engineering student who enjoys looking at a real-world problem and asking, “Could technology make this better?” That question keeps pulling me toward software development, AI, and robotics—and into projects where I can learn by making.</p>
+                        <p>At Narayana Engineering College, I’m pursuing my B.Tech, taking part in hackathons, and exploring emerging technologies one project at a time. I’m working toward becoming a software engineer who helps turn thoughtful ideas into useful solutions.</p>
+                        <div class="tag-row"><span>Software Development</span><span>AI</span><span>Robotics</span></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="shelf-heading interest-heading">
+                    <div><p class="shelf-kicker">WHEN I'M OFFLINE</p><h2>Interests &amp; <span>Hobbies</span></h2><p class="shelf-description">A few ways I recharge, find inspiration, and keep my curiosity switched on.</p></div>
+                </div>
+                <div class="horizontal-shelf interest-shelf">
+                    <article class="interest-card"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><h3>Tech Exploration</h3><p>Tech blogs and new ideas in AI and robotics keep me exploring.</p></article>
+                    <article class="interest-card"><i class="fa-solid fa-table-tennis-paddle-ball" aria-hidden="true"></i><h3>Sports</h3><p>A badminton game is my favorite way to reset and get moving.</p></article>
+                    <article class="interest-card"><i class="fa-solid fa-music" aria-hidden="true"></i><h3>Music</h3><p>A good playlist helps me unwind and often sparks a fresh perspective.</p></article>
+                </div>
+            </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Projects</h2>
-            <div class="projects-grid" style="display: flex; justify-content: center;">
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100"
-                    style="max-width: 550px; width: 100%;">
-                    <div class="project-image">
-                        <img src="patient_care_system.png"
-                            alt="Autonomous Patient-Care Coordination System Using Agentic AI">
+            <section id="contact" class="catalog-section contact-section">
+                <div class="contact-banner">
+                    <div class="contact-copy">
+                        <p class="shelf-kicker">THE NEXT CHAPTER</p>
+                        <h2>Have an idea? <span>Let’s talk.</span></h2>
+                        <p>Have an interesting problem, an opportunity, or a favorite bit of technology you want to discuss? I’d love to hear about it.</p>
                     </div>
-                    <div class="project-content">
-                        <h3>Autonomous Patient-Care Coordination System Using Agentic AI</h3>
-                        <p>Coded using Python for backend and HTML, CSS, JS for frontend and interactions, with AI
-                            integration for agentic performance.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>HTML/CSS</span>
-                            <span>JavaScript</span>
-                            <span>Agentic AI</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/pavanth17/Autonomous_Patient-Care_Coordination_System_Using_Agentic_AI"
-                                target="_blank" class="project-link"><i class="fab fa-github"></i> Code</a>
-                        </div>
+                    <div class="contact-links">
+                        <a href="mailto:pavanthkumar17@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>EMAIL</small><strong>pavanthkumar17@gmail.com</strong></span></a>
+                        <a href="tel:+919700443157"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>PHONE</small><strong>+91 9700443157</strong></span></a>
+                        <p><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><small>LOCATION</small><strong>Andhra Pradesh, India</strong></span></p>
+                    </div>
+                    <div class="social-links" aria-label="Social profiles">
+                        <a href="https://linkedin.com/in/pavanthkumarchopparapu" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a href="https://github.com/pavanth17" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/p/DE2LePyyZll/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <!-- Hobbies Section -->
-    <section id="hobbies" class="hobbies">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Hobbies & Interests</h2>
-            <div class="hobbies-grid">
-                <div class="hobby-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="hobby-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Tech Exploration</h3>
-                    <p>Reading tech blogs and exploring the latest developments in AI & Robotics</p>
-                </div>
-                <div class="hobby-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="hobby-icon">
-                        <i class="fas fa-table-tennis"></i>
-                    </div>
-                    <h3>Sports</h3>
-                    <p>Playing Badminton to stay active and maintain work-life balance</p>
-                </div>
-                <div class="hobby-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="hobby-icon">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <h3>Music</h3>
-                    <p>Listening to music to relax and find inspiration for creative problem-solving</p>
-                </div>
+        <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+            <div class="dialog-content">
+                <button class="dialog-close" type="button" aria-label="Close project details"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+                <p class="shelf-kicker">PAVANTH ORIGINAL · PROJECT 01</p>
+                <h2 id="dialog-title">Autonomous Patient-Care Coordination System Using Agentic AI</h2>
+                <p>A patient-care coordination system bringing a Python backend, an interactive web frontend, and agentic AI into one project.</p>
+                <div class="tag-row"><span>Python</span><span>HTML/CSS</span><span>JavaScript</span><span>Agentic AI</span></div>
+                <a class="button button-play" href="https://github.com/pavanth17/Autonomous_Patient-Care_Coordination_System_Using_Agentic_AI"
+                    target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> View repository</a>
             </div>
-        </div>
-    </section>
+        </dialog>
+    </main>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <div class="contact-content" style="display: flex; justify-content: center; text-align: center;">
-                <div class="contact-info" data-aos="fade-up" style="max-width: 600px; width: 100%;">
-                    <h3>Let's Connect!</h3>
-                    <p>I'm always open to discussing new opportunities, interesting projects, or just having a chat
-                        about technology.</p>
-                    <div class="contact-details" style="max-width: 320px; margin: 0 auto 30px auto; text-align: left;">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+91 9700443157</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>pavanthkumar17@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Andhra Pradesh, India</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links" style="justify-content: center;">
-                        <a href="https://linkedin.com/in/pavanthkumarchopparapu" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/pavanth17" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.instagram.com/p/DE2LePyyZll/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-                            target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 Pavanth Kumar Chopparapu. All rights reserved.</p>
-                <p>Made with <i class="fas fa-heart"></i> and lots of coffee</p>
-            </div>
-        </div>
+    <footer class="app-footer" inert>
+        <div class="footer-brand"><span class="brand-mark">PK</span><span class="brand-word">PAVANTH<span>+</span></span></div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="#home">Home</a><a href="#projects">Projects</a><a href="#expertise">Expertise</a><a href="#story">Journey</a><a href="#contact">Contact</a>
+        </nav>
+        <p>&copy; <span id="current-year">2026</span> Pavanth Kumar Chopparapu. All rights reserved.</p>
+        <div class="footer-attribution">Atmospheric image: <a href="https://www.flickr.com/photos/24662369@N07/27717718518" target="_blank" rel="noopener noreferrer">“Lagoon Nebula” by NASA Goddard Photo and Video</a> · <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a></div>
+        <a href="#home">Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a>
     </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=9" defer></script>
 </body>
 
 </html>
